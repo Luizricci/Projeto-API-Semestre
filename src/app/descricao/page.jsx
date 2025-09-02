@@ -49,12 +49,12 @@ export default function Descricao() {
                 </div>
 
                 <div className={styles.buttons}>
-                    <Link href="https://brasilapi.com.br/docs" target="_blank" className={styles.buttonPrimary}>
-                        Ver a documentação da API
-                    </Link>
                     <Link href="/home" className={styles.buttonSecondary}>
                         Voltar para o início
                     </Link>
+                    <Link href="/listagem" target="_blank" className={styles.buttonPrimary}>
+                        Listagem
+                    </Link> 
                 </div>
             </div>
         </div>
