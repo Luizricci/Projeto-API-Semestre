@@ -1,0 +1,238 @@
+.container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2rem;
+}
+
+.card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 0;
+    box-shadow: none;
+    padding: 4rem 3rem;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    backdrop-filter: none;
+    border: none;
+    border-radius: 15px;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+.description {
+    color: #4a5568;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.highlight {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.buttonPrimary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.buttonPrimary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.buttonSecondary {
+    background: transparent;
+    color: #667eea;
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid #667eea;
+    transition: all 0.3s;
+    font-size: 1rem;
+}
+
+.buttonSecondary:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.highlight {
+    color: #667eea;
+    font-weight: 700;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .buttonPrimary,
+    .buttonSecondary {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+    
+    .attributesList {
+        margin-left: 1rem;
+    }
+}
+
+.apiInfo {
+    margin-bottom: 3rem;
+}
+
+.infoSection {
+    background: none;
+    padding: 2rem 0;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #e2e8f0;
+    transition: none;
+}
+
+.infoSection:last-child {
+    border-bottom: none;
+}
+
+.infoSection:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.sectionTitle {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 1rem;
+    display: block;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.sectionTitle::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2px;
+}
+
+.link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.link:hover {
+    border-bottom-color: #667eea;
+}
+
+.code {
+    background: #2d3748;
+    color: #e2e8f0;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    display: block;
+    margin-top: 0.75rem;
+    border-left: 4px solid #667eea;
+}
+
+.attributesList {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 2rem;
+}
+
+.attributesList li {
+    background: none;
+    padding: 0.75rem 0;
+    border-radius: 0;
+    border-left: none;
+    border-bottom: 1px solid #f1f5f9;
+    box-shadow: none;
+    font-size: 1rem;
+    transition: none;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.attributesList li:before {
+    content: "•";
+    color: #667eea;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.attributesList li:hover {
+    transform: none;
+}
+
+.attributesList li code {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    font-weight: 600;
+    margin-right: 0.75rem;
+}
