@@ -3,8 +3,8 @@ import "./globals.css";
 
 
 export const metadata = {
-  title: "API Brasil",
-  description: "Projeto de APIs públicas brasileiras.",
+  title: "API Animes",
+  description: "Projeto de APIs de animes.",
 };
 
 export default function RootLayout({ children }) {

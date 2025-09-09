@@ -55,7 +55,7 @@ export default function Descricao() {
                     <Link href="/home" className={styles.buttonSecondary}>
                         Voltar para o início
                     </Link>
-                    <Link href="/listagem" target="_blank" className={styles.buttonPrimary}>
+                    <Link href="/listagem" className={styles.buttonPrimary}>
                         Listagem
                     </Link> 
                 </div>

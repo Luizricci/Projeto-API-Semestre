@@ -10,7 +10,7 @@
     padding: 2rem;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -25,6 +25,11 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
 
 .description {
     text-align: center;
@@ -37,13 +42,77 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 16px;
+    padding: 20px 0;
 }
 .backButton{
     cursor: pointer;
     font-size: 2rem;
     color: #ffffff;
+}
+
+
+.animeCard {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    height: auto;
+    cursor: pointer;
+}
+
+.animeImage {
+    width: 100%;
+    max-width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.animeTitle {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.animeSynopsis {
+    font-size: 0.85rem;
+    margin: 6px 0;
+    color: #666;
+    line-height: 1.4;
+}
+
+.animeRating,
+.animeEpisodes,
+.animeYear {
+    font-size: 0.8rem;
+    margin: 4px 0;
+    color: #555;
+}
+
+.animeRating strong,
+.animeEpisodes strong,
+.animeYear strong {
+    font-weight: 600;
+}
+
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+    padding: 20px 0;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 40px;
+    color: #666;
 }
 
 
