@@ -1,11 +1,11 @@
 "use client";
-import styles from './listagem.module.css';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { ArrowLeftOutlined } from '@ant-design/icons';
+import styles from "./listagem.module.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Pagination } from "antd";
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Listagem() {
     const [animes, setAnimes] = useState([]);
@@ -18,23 +18,30 @@ export default function Listagem() {
         fetchAnimes(currentPage);
     }, [currentPage]);
 
+    
+
     async function fetchAnimes(page) {
         setLoading(true);
         try {
-            const response = await axios.get(`https://api.jikan.moe/v4/anime?page=${page}`);
-            setAnimes(response.data.data);
-            setTotalItems(response.data.pagination.items.total);
-            console.log(response.data.data);
-        } catch (error) {
-            console.error('Erro ao buscar os animes:', error);
+            const cache = sessionStorage.getItem(`Animes_${page}`);
+            if (cache) {
+                const parsed = JSON.parse(cache);
+                setAnimes(parsed.data);
+                setTotalItems(parsed.pagination.items.total);
+                return;
+            }
+            const { data } = await axios.get(`https://api.jikan.moe/v4/anime?page=${page}`);
+            setAnimes(data.data);
+            setTotalItems(data.pagination.items.total);
+            sessionStorage.setItem(`Animes_${page}`, JSON.stringify(data));
+        } catch (err) {
+            console.error("Erro ao buscar animes:", err);
         } finally {
             setLoading(false);
         }
     }
 
-    const handlePageChange = (page) => {
-        setCurrentPage(page);
-    };
+    const handlePageChange = (page) => setCurrentPage(page);
 
     const handleAnimeClick = (animeId) => {
         router.push(`/listagem/${animeId}`);
@@ -42,40 +49,39 @@ export default function Listagem() {
 
     return (
         <div className={styles.container}>
-            <Link href="/descricao" className={styles.backButton} >
+            <Link href="/descricao" className={styles.backButton}>
                 <ArrowLeftOutlined />
             </Link>
+
             <div className={styles.card}>
                 <h1 className={styles.title}>Listagem de Animes</h1>
                 <p className={styles.description}>
                     Aqui você pode visualizar a listagem de animes disponíveis na API.
                 </p>
-                
+
                 {loading ? (
                     <div className={styles.loading}>Carregando...</div>
                 ) : (
                     <>
                         <div className={styles.grid}>
                             {animes.map((anime) => (
-                                <div 
-                                    key={anime.mal_id} 
+                                <div
+                                    key={anime.mal_id}
                                     className={styles.animeCard}
-                                    onClick={() => handleAnimeClick(anime.mal_id)}
-                                    style={{ cursor: 'pointer' }}
-                                >
+                                    onClick={() => handleAnimeClick(anime.mal_id)}>
                                     <div className={styles.imageContainer}>
-                                        <img 
-                                            src={anime.images.jpg.image_url} 
-                                            alt={anime.title} 
-                                            className={styles.animeImage} 
+                                        <img
+                                            src={anime.images.jpg.image_url}
+                                            alt={anime.title}
+                                            className={styles.animeImage}
                                         />
                                     </div>
                                     <h2 className={styles.animeTitle}>{anime.title}</h2>
-                                    <p>Score: {anime.score}</p>
+                                    <p>Nota: {anime.score}</p>
                                 </div>
                             ))}
                         </div>
-                        
+
                         <div className={styles.paginationContainer}>
                             <Pagination
                                 current={currentPage}
@@ -83,7 +89,7 @@ export default function Listagem() {
                                 pageSize={25}
                                 onChange={handlePageChange}
                                 showSizeChanger={false}
-                                showQuickJumper={true}
+                                showQuickJumper
                             />
                         </div>
                     </>
@@ -92,3 +98,4 @@ export default function Listagem() {
         </div>
     );
 }
+

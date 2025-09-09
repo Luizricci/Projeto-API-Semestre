@@ -10,7 +10,7 @@
     padding: 2rem;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
-    width: 100%;
+    width: 95%;
     margin: 0 auto;
 }
 
@@ -62,7 +62,14 @@
     max-width: 300px;
     height: auto;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
+.animeCard:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+    
+}
+
 
 .animeImage {
     width: 100%;
