@@ -71,6 +71,7 @@ export default function Listagem() {
                                         />
                                     </div>
                                     <h2 className={styles.animeTitle}>{anime.title}</h2>
+                                    <p>Score: {anime.score}</p>
                                 </div>
                             ))}
                         </div>
