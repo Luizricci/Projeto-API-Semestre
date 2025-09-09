@@ -34,6 +34,21 @@ export default function Listagem() {
             setAnimes(data.data);
             setTotalItems(data.pagination.items.total);
             sessionStorage.setItem(`Animes_${page}`, JSON.stringify(data));
+
+            const keys = Object.keys(sessionStorage).filter(key => key.startsWith('Animes_'));
+            
+            if (keys.length > 6) {
+                // Ordena as chaves para pegar a mais antiga (menor número de página)
+                const sortedKeys = keys.sort((a, b) => {
+                    const pageA = parseInt(a.replace('Animes_', ''));
+                    const pageB = parseInt(b.replace('Animes_', ''));
+                    return pageA - pageB;
+                });
+                
+                // Remove a mais antiga (primeira da lista ordenada)
+                sessionStorage.removeItem(sortedKeys[0]);
+                console.log(`🗑️ Removido do cache: ${sortedKeys[0]}`);
+            }
         } catch (err) {
             console.error("Erro ao buscar animes:", err);
         } finally {
