@@ -1,8 +1,9 @@
 "use client";
 import styles from "./listagem.module.css";
 import axios from "axios";
+import AnimeCard from "../../components/AnimeCard";
 import { useEffect, useState } from "react";
-import { ArrowLeftOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Pagination } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -17,8 +18,6 @@ export default function Listagem() {
     useEffect(() => {
         fetchAnimes(currentPage);
     }, [currentPage]);
-
-    
 
     async function fetchAnimes(page) {
         setLoading(true);
@@ -38,14 +37,12 @@ export default function Listagem() {
             const keys = Object.keys(sessionStorage).filter(key => key.startsWith('Animes_'));
             
             if (keys.length > 6) {
-                // Ordena as chaves para pegar a mais antiga (menor número de página)
                 const sortedKeys = keys.sort((a, b) => {
                     const pageA = parseInt(a.replace('Animes_', ''));
                     const pageB = parseInt(b.replace('Animes_', ''));
                     return pageA - pageB;
                 });
                 
-                // Remove a mais antiga (primeira da lista ordenada)
                 sessionStorage.removeItem(sortedKeys[0]);
                 console.log(`🗑️ Removido do cache: ${sortedKeys[0]}`);
             }
@@ -80,20 +77,11 @@ export default function Listagem() {
                     <>
                         <div className={styles.grid}>
                             {animes.map((anime) => (
-                                <div
+                                <AnimeCard
                                     key={anime.mal_id}
-                                    className={styles.animeCard}
-                                    onClick={() => handleAnimeClick(anime.mal_id)}>
-                                    <div className={styles.imageContainer}>
-                                        <img
-                                            src={anime.images.jpg.image_url}
-                                            alt={anime.title}
-                                            className={styles.animeImage}
-                                        />
-                                    </div>
-                                    <h2 className={styles.animeTitle}>{anime.title}</h2>
-                                    <p>Nota: {anime.score}</p>
-                                </div>
+                                    anime={anime}
+                                    onAnimeClick={handleAnimeClick}
+                                />
                             ))}
                         </div>
 
