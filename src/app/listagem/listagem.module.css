@@ -1,137 +1,198 @@
 .container {
     min-height: 100vh;
-    padding: 2rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    padding: 20px;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    background: rgba(35, 37, 43, 0.95);
+    border-radius: 16px;
+    padding: 32px;
     backdrop-filter: blur(10px);
-    width: 95%;
-    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .title {
-    text-align: center;
+    color: #ff6600;
     font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 1rem;
     font-weight: 700;
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-.imageContainer {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
+    text-align: center;
+    margin-bottom: 16px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .description {
+    color: #a0a0a0;
     text-align: center;
-    color: #666;
-    margin-bottom: 3rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    margin-bottom: 32px;
     line-height: 1.6;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-    padding: 20px 0;
-}
-.backButton{
-    cursor: pointer;
-    font-size: 2rem;
-    color: #ffffff;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
 }
 
-
-.animeCard {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 12px;
+.loading {
     text-align: center;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    height: auto;
+    font-size: 1.2rem;
+    color: #ff6600;
+    padding: 60px 0;
+}
+
+.backButton {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 102, 0, 0.9);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-}
-.animeCard:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transform: translateY(-4px);
-    
+    font-size: 18px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
 }
 
-
-.animeImage {
-    width: 100%;
-    max-width: 150px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 8px;
-}
-
-.animeTitle {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 6px;
-    line-height: 1.3;
-}
-
-.animeSynopsis {
-    font-size: 0.85rem;
-    margin: 6px 0;
-    color: #666;
-    line-height: 1.4;
-}
-
-.animeRating,
-.animeEpisodes,
-.animeYear {
-    font-size: 0.8rem;
-    margin: 4px 0;
-    color: #555;
-}
-
-.animeRating strong,
-.animeEpisodes strong,
-.animeYear strong {
-    font-weight: 600;
+.backButton:hover {
+    background: #ff6600;
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(255, 102, 0, 0.4);
 }
 
 .paginationContainer {
     display: flex;
     justify-content: center;
     margin-top: 32px;
-    padding: 20px 0;
 }
 
-.loading {
-    text-align: center;
-    font-size: 1.2rem;
-    padding: 40px;
-    color: #666;
+.paginationContainer :global(.ant-pagination) {
+    color: #ffffff !important;
 }
 
+.paginationContainer :global(.ant-pagination-item) {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 102, 0, 0.3) !important;
+}
 
+.paginationContainer :global(.ant-pagination-item a) {
+    color: #ffffff !important;
+}
+
+.paginationContainer :global(.ant-pagination-item-active) {
+    background-color: #ff6600 !important;
+    border-color: #ff6600 !important;
+}
+
+.paginationContainer :global(.ant-pagination-item-active a) {
+    color: #ffffff !important;
+}
+
+.paginationContainer :global(.ant-pagination-prev),
+.paginationContainer :global(.ant-pagination-next) {
+    color: #ff6600 !important;
+    background-color: rgba(255, 102, 0, 0.1) !important;
+    border: 1px solid rgba(255, 102, 0, 0.3) !important;
+}
+
+.paginationContainer :global(.ant-pagination-prev:hover),
+.paginationContainer :global(.ant-pagination-next:hover) {
+    color: #ffffff !important;
+    background-color: #ff6600 !important;
+    border-color: #ff6600 !important;
+}
+
+.paginationContainer :global(.ant-pagination-prev .anticon),
+.paginationContainer :global(.ant-pagination-next .anticon) {
+    color: #ff6600 !important;
+}
+
+.paginationContainer :global(.ant-pagination-prev:hover .anticon),
+.paginationContainer :global(.ant-pagination-next:hover .anticon) {
+    color: #ffffff !important;
+}
+
+.paginationContainer :global(.ant-pagination-disabled) {
+    opacity: 0.5 !important;
+}
+
+.paginationContainer :global(.ant-pagination-disabled .anticon) {
+    color: #666666 !important;
+}
+
+.paginationContainer :global(.ant-pagination-prev:hover),
+.paginationContainer :global(.ant-pagination-next:hover),
+.paginationContainer :global(.ant-pagination-item:hover) {
+    border-color: #ff6600 !important;
+}
+
+.paginationContainer :global(.ant-pagination-item:hover a) {
+    color: #ff6600 !important;
+}
+
+.paginationContainer :global(.ant-pagination-jump-prev),
+.paginationContainer :global(.ant-pagination-jump-next) {
+    color: #ffffff !important;
+}
+
+.paginationContainer :global(.ant-pagination-jump-prev .ant-pagination-item-container),
+.paginationContainer :global(.ant-pagination-jump-next .ant-pagination-item-container) {
+    color: #ff6600 !important;
+}
+
+.paginationContainer :global(.ant-pagination-jump-prev .ant-pagination-item-link-icon),
+.paginationContainer :global(.ant-pagination-jump-next .ant-pagination-item-link-icon) {
+    color: #ff6600 !important;
+}
+
+.paginationContainer :global(.ant-pagination-jump-prev:hover .ant-pagination-item-link-icon),
+.paginationContainer :global(.ant-pagination-jump-next:hover .ant-pagination-item-link-icon) {
+    color: #ffffff !important;
+}
+
+.paginationContainer :global(.ant-pagination-jump-prev:hover),
+.paginationContainer :global(.ant-pagination-jump-next:hover) {
+    background-color: #ff6600 !important;
+    border-color: #ff6600 !important;
+}
+
+.paginationContainer :global(.ant-pagination-jump-prev),
+.paginationContainer :global(.ant-pagination-jump-next) {
+    color: #ffffff !important;
+}
+
+.paginationContainer :global(.ant-pagination-options-quick-jumper input) {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 102, 0, 0.3) !important;
+    color: #ffffff !important;
+}
+
+.paginationContainer :global(.ant-pagination-item-ellipsis) {
+    color: #ff6600 !important;
+}
+
+.paginationContainer :global(.ant-pagination-jump-prev .anticon-double-left),
+.paginationContainer :global(.ant-pagination-jump-next .anticon-double-right) {
+    color: #ff6600 !important;
+}
 
 @media (max-width: 768px) {
     .container {
-        padding: 1rem;
+        padding: 15px;
     }
     
     .card {
-        padding: 1.5rem;
-        margin: 1rem;
+        padding: 20px;
+        border-radius: 12px;
     }
     
     .title {
@@ -139,23 +200,13 @@
     }
     
     .grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
     }
     
-}
-
-@media (max-width: 480px) {
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .title {
-        font-size: 1.5rem;
-    }
-    
-    .description {
-        font-size: 1rem;
+    .backButton {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
     }
 }
