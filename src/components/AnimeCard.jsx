@@ -1,5 +1,5 @@
 import styles from '../styles/AnimeCard.module.css';
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons';
 
 const AnimeCard = ({ anime, onAnimeClick }) => {
     const handleClick = () => {
@@ -9,11 +9,6 @@ const AnimeCard = ({ anime, onAnimeClick }) => {
     const handleDelete = (e) => {
         e.stopPropagation();
         console.log(`Delete ${anime.title}`);
-    };
-
-    const handleEdit = (e) => {
-        e.stopPropagation();
-        console.log(`Edit ${anime.title}`);
     };
 
     return (
@@ -30,11 +25,6 @@ const AnimeCard = ({ anime, onAnimeClick }) => {
                 <div className={styles.cardFooter}>
                     <p className={styles.animeScore}>Nota: {anime.score || 'N/A'}</p>
                     <div className={styles.iconContainer}>
-                        <EditOutlined 
-                            className={styles.editIcon} 
-                            onClick={handleEdit}
-                            title="Editar anime"
-                        />
                         <DeleteOutlined 
                             className={styles.deleteIcon} 
                             onClick={handleDelete}
