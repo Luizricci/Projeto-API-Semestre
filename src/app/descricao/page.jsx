@@ -1,7 +1,18 @@
+"use client"
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
+import { useState } from "react";
 
 export default function Descricao() {
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
+
+    const handleNavigateToListagem = () => {
+        setLoading(true);
+        router.push('/listagem');
+    };
+
     return (
         <div className={styles.container}>
             <div className={styles.card}>
@@ -74,9 +85,20 @@ export default function Descricao() {
                     <Link href="/home" className={styles.buttonSecondary}>
                         Voltar para o início
                     </Link>
-                    <Link href="/listagem" className={styles.buttonPrimary}>
-                        Listagem de Animes
-                    </Link> 
+                    <button 
+                        onClick={handleNavigateToListagem}
+                        disabled={loading}
+                        className={`${styles.buttonPrimary} ${loading ? styles.buttonLoading : ''}`}
+                    >
+                        {loading ? (
+                            <>
+                                <span className={styles.spinner}></span>
+                                Carregando...
+                            </>
+                        ) : (
+                            'Listagem de Animes'
+                        )}
+                    </button> 
                 </div>
             </div>
         </div>

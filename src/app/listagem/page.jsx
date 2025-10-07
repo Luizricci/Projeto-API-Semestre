@@ -3,7 +3,8 @@ import styles from "./listagem.module.css";
 import axios from "axios";
 import AnimeCard from "../../components/AnimeCard";
 import { useEffect, useState } from "react";
-import { ArrowLeftOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined} from "@ant-design/icons";
+import { Modal } from "antd";
 import { Pagination } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -64,7 +65,6 @@ export default function Listagem() {
             <Link href="/descricao" className={styles.backButton}>
                 <ArrowLeftOutlined />
             </Link>
-
             <div className={styles.card}>
                 <h1 className={styles.title}>Listagem de Animes</h1>
                 <p className={styles.description}>
